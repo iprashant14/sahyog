@@ -3,6 +3,10 @@
 import os
 import sys
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sahyog_settings.settings')

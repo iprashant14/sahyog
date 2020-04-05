@@ -1,12 +1,16 @@
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
+from utils.helpers import upload_image
+
 
 # Create your models here.
+
+
 class Benefactor(models.Model):
     name = models.CharField(max_length=200)
     mobile = models.CharField(max_length=10, validators=[MinLengthValidator(10)], unique=True)
-    image = models.ImageField(default='default.img')
+    image = models.ImageField(default='default_benefactor_image.jpg', upload_to=upload_image)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -24,4 +28,4 @@ class BenefactorTransaction(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.benefactor.mobile} | Amount - Rs {self.amount} /-"
+        return f"{self.benefactor} | Amount :- Rs {self.amount} /-"

@@ -31,11 +31,11 @@ cscope.*
 .coverage
 htmlcov
 
-# static directory
-static
+# collect static directory
+staticfiles
 
 # media directory
-media
+media/*
 
 #log directory
 log
@@ -53,3 +53,6 @@ docker-compose-build*.yml
 
 # python version file
 .python-version
+
+# allow default file
+!media/default_benefactor_image.jpg

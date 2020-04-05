@@ -1,0 +1,52 @@
+# executables #
+###############
+*.pyc
+
+# temporary files #
+###################
+*~
+*.swo
+*.swp
+*.orig
+.elasticbeanstalk/
+.anvil
+celerybeat-schedule
+
+# cscope files
+cscope.*
+
+# eclipse project files (Don need'em)
+.project
+.pydevproject
+
+# some VIM related files that are not required
+.project.ide.files
+
+# db sqlite and mysql files
+*.db
+*.sql
+*.sqlite3
+
+# coverage files
+.coverage
+htmlcov
+
+# media directory
+media
+
+#log directory
+log
+logs
+
+# idea files
+.idea
+django.wsgi
+supervisord.conf
+
+# docker-compose files
+.env
+*conf.*.ini
+docker-compose-build*.yml
+
+# python version file
+.python-version

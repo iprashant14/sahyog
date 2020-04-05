@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
@@ -12,7 +11,7 @@ class Benefactor(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} | {self.mobile} "
+        return f"Name :- {self.name} | Mobile:- {self.mobile} "
 
     @property
     def amount(self):
@@ -26,8 +25,3 @@ class BenefactorTransaction(models.Model):
 
     def __str__(self):
         return f"{self.benefactor.mobile} | Amount - Rs {self.amount} /-"
-
-    # def save(self, *args, **kwargs):
-    #     if self.amount:
-    #         raise ValidationError("Cant change amount")
-    #     super(BenefactorTransaction, self).save(*args, **kwargs)

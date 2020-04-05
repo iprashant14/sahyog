@@ -41,6 +41,7 @@ DJANGO_APPS = [
 
 INTERNAL_APPS = [
     'benefactor',
+    'beneficiary',
     'storefront',
 ]
 

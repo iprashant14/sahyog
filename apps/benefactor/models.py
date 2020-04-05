@@ -27,7 +27,7 @@ class BenefactorTransaction(models.Model):
     def __str__(self):
         return f"{self.benefactor.mobile} | Amount - Rs {self.amount} /-"
 
-    def save(self, *args, **kwargs):
-        if self.amount:
-            raise ValidationError("Cant change amount")
-        super(BenefactorTransaction, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.amount:
+    #         raise ValidationError("Cant change amount")
+    #     super(BenefactorTransaction, self).save(*args, **kwargs)

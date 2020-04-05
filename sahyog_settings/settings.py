@@ -40,11 +40,12 @@ DJANGO_APPS = [
 ]
 
 INTERNAL_APPS = [
-    'benefactor.apps.BenefactorConfig',
+    'benefactor',
+    'storefront',
 ]
 
 EXTERNAL_APPS = [
-
+    'django_extensions',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + INTERNAL_APPS + EXTERNAL_APPS
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'sahyog_settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -127,4 +128,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+# Media files (Dynamic Images)
+# https://docs.djangoproject.com/en/3.0/ref/settings/#media-root
+# https://docs.djangoproject.com/en/3.0/ref/settings/#media-url
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

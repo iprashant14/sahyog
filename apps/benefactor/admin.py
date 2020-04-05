@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 
-from apps.benefactor.models import Benefactor
+from benefactor.models import Benefactor, BenefactorTransaction
 
 admin.site.register(Benefactor)
+admin.site.register(BenefactorTransaction)
 

@@ -31,6 +31,9 @@ cscope.*
 .coverage
 htmlcov
 
+# static directory
+static
+
 # media directory
 media
 

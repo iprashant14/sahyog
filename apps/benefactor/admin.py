@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from image_cropping import ImageCroppingMixin, ImageCropWidget
 
 from benefactor.models import Benefactor, BenefactorTransaction
 
@@ -27,5 +28,9 @@ class BenefactorTransactionAdmin(admin.ModelAdmin):
     form = BenefactorTransactionForm
 
 
-admin.site.register(Benefactor)
+class BenefactorAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Benefactor, BenefactorAdmin)
 admin.site.register(BenefactorTransaction, BenefactorTransactionAdmin)

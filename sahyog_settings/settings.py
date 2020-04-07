@@ -52,6 +52,7 @@ EXTERNAL_APPS = [
     'django_extensions',
     'easy_thumbnails',
     'image_cropping',
+    'rest_framework',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + INTERNAL_APPS + EXTERNAL_APPS
@@ -151,3 +152,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 IMAGE_CROPPING_SIZE_WARNING = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 20
+}

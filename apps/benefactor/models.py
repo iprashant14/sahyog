@@ -2,6 +2,9 @@ from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 from image_cropping import ImageRatioField
 from image_cropping.utils import get_backend
+from django.db.models import Sum, Value as V
+from django.db.models.functions import Coalesce
+
 
 from utils.helpers import upload_image
 
@@ -22,7 +25,11 @@ class Benefactor(models.Model):
 
     @property
     def amount(self):
-        return self.transaction_set.all
+        aggregated = self.transaction_set.aggregated(
+            combined_sum = Coalesce(Sum('amount'),V(0)),
+            combined_sum_default = Sum('amount')
+        )
+        return aggregated['combined_sum']
 
     @property
     def thumbnail_url(self):

@@ -1,8 +1,8 @@
+from benefactor.models import Benefactor, BenefactorTransaction
 from django import forms
 from django.contrib import admin
-from image_cropping import ImageCroppingMixin, ImageCropWidget
+from image_cropping import ImageCroppingMixin
 
-from benefactor.models import Benefactor, BenefactorTransaction
 
 # Register your models here.
 
@@ -29,7 +29,7 @@ class BenefactorTransactionAdmin(admin.ModelAdmin):
 
 
 class BenefactorAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    pass
+    readonly_fields = ('amount',)
 
 
 admin.site.register(Benefactor, BenefactorAdmin)

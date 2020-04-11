@@ -53,6 +53,7 @@ EXTERNAL_APPS = [
     'easy_thumbnails',
     'image_cropping',
     'rest_framework',
+    'django_filters',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + INTERNAL_APPS + EXTERNAL_APPS

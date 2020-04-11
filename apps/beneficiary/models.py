@@ -9,18 +9,15 @@ from utils.helpers import upload_image
 
 class Beneficiary(models.Model):
     image = models.ImageField(upload_to=upload_image)
+    image_date = models.DateField(help_text="Image clicked date")
     created = models.DateTimeField(auto_now_add=True)
 
-    # class Meta:
-    #     verbose_name_plural = "Beneficiaries"
+    class Meta:
+        verbose_name_plural = "Beneficiaries"
 
     def __str__(self):
         return f"{self.created}"
 
-    # @classmethod
-    # def get_results_by_date(cls, date):
-    #     today = timezone.now().today()
-    #     tomorrow = today + timezone.timedelta(days=1)
-    #     today_start = datetime.combine(today, time())
-    #     today_end = datetime.combine(tomorrow, time())
-    #     return cls.objects.filter()
+    def save(self, *args, **kwargs):
+        self.image_date = self.image_date if self.image_date else self.created.date()
+        super(Beneficiary, self).save(*args, **kwargs)

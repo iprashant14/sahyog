@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from beneficiary.api import serializers
@@ -10,5 +11,7 @@ class BeneficiaryViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
     serializer_class = serializers.BeneficiarySerializer
     queryset = Beneficiary.objects.all()
-    filter_backends = (OrderingFilter,)
+    filter_backends = (OrderingFilter, DjangoFilterBackend)
     ordering_fields = ('created',)
+    filterset_fields = ('image_date',)
+

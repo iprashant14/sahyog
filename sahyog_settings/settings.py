@@ -42,6 +42,7 @@ DJANGO_APPS = [
 ]
 
 INTERNAL_APPS = [
+    'contact',
     'benefactor',
     'beneficiary',
     'storefront',
@@ -160,3 +161,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 20
 }
+
+SENDER_EMAIL = 'sahyog.humara@gmail.com'
+
+SUBJECT_CONTENT = 'humara sahyog related query'
+
+MESSAGE_BODY = 'Thank you for your feedback!'
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sahyog.humara@gmail.com'
+EMAIL_HOST_PASSWORD = 'Shubhamji@2000'

@@ -16,7 +16,7 @@ class Beneficiary(models.Model):
         verbose_name_plural = "Beneficiaries"
 
     def __str__(self):
-        return f"{self.created}"
+        return f"{self.image_date}"
 
     def save(self, *args, **kwargs):
         self.image_date = self.image_date if self.image_date else self.created.date()

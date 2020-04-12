@@ -8,7 +8,7 @@ class BenefactorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Benefactor
-        fields = ('id', 'name', 'thumbnail_url', 'created')
+        fields = ('id', 'name','description', 'thumbnail_url', 'created')
 
     def get_thumbnail_url(self, instance):
         request = self.context['request']

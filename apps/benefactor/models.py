@@ -14,6 +14,7 @@ from utils.helpers import upload_image
 
 class Benefactor(models.Model):
     name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200,blank=True)
     mobile = models.CharField(max_length=10, validators=[MinLengthValidator(10)], unique=True)
     image = models.ImageField(default='default_benefactor_image.jpg', upload_to=upload_image)
     cropping = ImageRatioField('image', '255x255')

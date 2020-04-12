@@ -67,9 +67,9 @@ THUMBNAIL_PROCESSORS = (
 
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -174,3 +174,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'sahyog.humara@gmail.com'
 EMAIL_HOST_PASSWORD = 'Shubhamji@2000'
+
+CORS_ORIGIN_ALLOW_ALL = True

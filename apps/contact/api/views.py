@@ -24,6 +24,6 @@ class EmailViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         response = super(EmailViewSet, self).create(request, *args, **kwargs)
-        send_email(self.request.POST.get("email"))  # sending mail
+        send_email(self.request.data.get('email'))  # sending mail
         return response
 

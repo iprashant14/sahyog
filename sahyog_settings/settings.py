@@ -49,6 +49,7 @@ INTERNAL_APPS = [
 ]
 
 EXTERNAL_APPS = [
+    'corsheaders',
     'django_extensions',
     'easy_thumbnails',
     'image_cropping',
@@ -65,6 +66,7 @@ THUMBNAIL_PROCESSORS = (
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

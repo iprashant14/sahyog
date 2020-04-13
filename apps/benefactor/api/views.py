@@ -17,8 +17,7 @@ class BenefactorViewSet(viewsets.ModelViewSet):
     search_fields = ('name',)
 
     @action(methods=['get'], detail=False,url_path="random")
-    def random_benefactors(self, request,*args,**kwargs):
-
-        querySet1 = Benefactor.objects.order_by('?').all()[:3]
-        serializer = serializers.BenefactorSerializer(querySet1,many=True,context={'request': request})
+    def random_benefactors(self, request, *args, **kwargs):
+        queryset = Benefactor.objects.order_by('?').all()[:3]
+        serializer = serializers.BenefactorSerializer(queryset,many=True,context={'request': request})
         return Response(data=serializer.data, status=status.HTTP_200_OK)

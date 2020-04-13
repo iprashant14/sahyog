@@ -13,9 +13,8 @@ class BenefactorViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.BenefactorSerializer
     queryset = Benefactor.objects.all()
     filter_backends = (OrderingFilter, SearchFilter)
-    ordering_fields = ('created',)
+    ordering_fields = ('created', 'name')
     search_fields = ('name',)
-
 
     @action(methods=['get'], detail=False,url_path="random")
     def random_benefactors(self, request,*args,**kwargs):

@@ -27,7 +27,7 @@ SECRET_KEY = 'wih8pc&1-4j%kd=5*(e_0r-ezdp%_+dfv9$wm$lbfihybp+&gs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['humarasahyog.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -146,7 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # This is used for collect static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]  # This is used for custom static files
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 
 # Media files (Dynamic Images)
 # https://docs.djangoproject.com/en/3.0/ref/settings/#media-root

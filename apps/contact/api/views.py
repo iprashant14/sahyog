@@ -7,15 +7,16 @@ from rest_framework.permissions import AllowAny
 
 from sahyog_settings import settings
 
+
 def send_email(receiver_email):
-    print(receiver_email)
     email = EmailMessage(
-        settings.SUBJECT_CONTENT,
-        settings.MESSAGE_BODY,
-        settings.SENDER_EMAIL,
+        settings.CONTACT_US_SUBJECT_CONTENT,
+        settings.CONTACT_US_MESSAGE_BODY,
+        settings.CONTACT_US_SENDER_EMAIL,
         [receiver_email]
     )
     email.send()
+
 
 class EmailViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)

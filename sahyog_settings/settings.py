@@ -12,10 +12,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import environ
 from easy_thumbnails.conf import Settings as thumbnail_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +32,7 @@ SECRET_KEY = 'wih8pc&1-4j%kd=5*(e_0r-ezdp%_+dfv9$wm$lbfihybp+&gs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['humarasahyog.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['humarasahyog.com'])
 
 
 # Application definition
@@ -104,7 +109,7 @@ WSGI_APPLICATION = 'sahyog_settings.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, env.str('DB_FILE_NAME', default='db.sqlite3')),
     }
 }
 
@@ -162,17 +167,15 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20
 }
 
-SENDER_EMAIL = 'sahyog.humara@gmail.com'
+CONTACT_US_SENDER_EMAIL = env.str('CONTACT_US_SENDER_EMAIL', default='sahyog.humara@gmail.com')
+CONTACT_US_SUBJECT_CONTENT = env.str('CONTACT_US_SUBJECT_CONTENT', default='Humara sahyog related query')
+CONTACT_US_MESSAGE_BODY = env.str('CONTACT_US_MESSAGE_BODY', default='Thank you for your feedback!')
 
-SUBJECT_CONTENT = 'humara sahyog related query'
-
-MESSAGE_BODY = 'Thank you for your feedback!'
-
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sahyog.humara@gmail.com'
-EMAIL_HOST_PASSWORD = 'Shubhamji@2000'
+EMAIL_BACKEND = env.str('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = env.str('EMAIL_HOST', default='smtp.gmail.com')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
 CORS_ORIGIN_ALLOW_ALL = True
